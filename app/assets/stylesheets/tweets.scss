@@ -1,0 +1,34 @@
+// Place all the styles related to the tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar-default{
+    background-color: white;
+}
+
+
+#twitter_bird{
+    background-position: center center;
+    padding: 10px 0;
+}
+
+
+#container1{
+    width: 30%;
+    float: left;
+}
+
+#container2{
+    width: 70%;
+    float: left;
+}
+
+container :after {
+  clear: both;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/glyphicons-halflings-regular.eot');
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}

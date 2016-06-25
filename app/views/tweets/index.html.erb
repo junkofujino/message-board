@@ -1,0 +1,37 @@
+<div class="container">
+  
+  <div id="container_top">
+    <img src="/assets/achieve.png">
+  </div>
+  
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
+    
+  <div id="container1">
+    aaa
+  </div>
+
+  <div id="container2">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to "ツイート", tweets_path %>
+        
+        <% @tweets.each do |tweet| %>
+        
+        <div class="row">
+          <p><%= tweet.content %></p>
+          <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-default btn-sm btn-success' %>
+          <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+        </div>
+        <% end %>
+      </li>
+      
+      <li role="presentation">
+        <%= link_to "ツイートと返信", tweets_path %>
+      </li>
+
+    </ul>
+  </div>
+  
+ </div>
+</div>
