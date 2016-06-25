@@ -43,6 +43,10 @@ group :development, :test do
   gem 'spring'
 end
 
+# bootstrapのgriphicon利用できるようにする
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
+
+# herokuのログを出す
+gem 'rails_12factor', group: :production
