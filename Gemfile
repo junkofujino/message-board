@@ -50,3 +50,14 @@ gem 'twitter-bootstrap-rails'
 
 # herokuのログを出す
 gem 'rails_12factor', group: :production
+
+# 画像アップローダー
+gem 'carrierwave'
+gem 'rmagick'
+
+gem 'devise'
+# シードデータ作成
+gem 'faker'
+
+# JavaScript
+gem 'jquery-turbolinks'

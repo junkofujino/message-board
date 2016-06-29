@@ -1,8 +1,9 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_tweet, only: [:edit, :update, :destroy]
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order("updated_at DESC")
   end
 
   def new
@@ -15,6 +16,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new(tweets_params)
+    @tweet.user_id = current_user.id
     if @tweet.save
       # 一覧画面へ遷移して"ツイートしました！"とメッセージを表示します。
       redirect_to tweets_path, notice: "ツイートを作成しました！"
@@ -29,7 +31,11 @@ class TweetsController < ApplicationController
   
   def update
     @tweet.update(tweets_params)
-    redirect_to tweets_path, notice: "ツイートを更新しました！"
+    if @tweet.valid?
+      redirect_to tweets_path, notice: "ツイートを更新しました！"
+    else
+      render action:'edit'
+    end
   end
   
   def destroy

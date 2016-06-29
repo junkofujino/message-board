@@ -1,37 +1,51 @@
+<div id="page-top-btn" class="page-top-btn">
+    <p><a class="move-page-top" id="move-page-top">▲</a></p>
+</div>
+
 <div class="container">
   
   <div id="container_top">
-    <img src="/assets/achieve.png">
   </div>
   
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     <p><%= notice %></p>
     
-  <div id="container1">
-    aaa
-  </div>
+    <div id="container1">
+       <%= profile_img_bg(current_user) %>
+       <p><em><%= link_to current_user.name, edit_user_registration_path %></em></p>
+       <p><%= current_user.profile %></p>
+    </div>
 
-  <div id="container2">
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active">
-        <%= link_to "ツイート", tweets_path %>
-        
+    <div id="container2">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><%= link_to "ツイート", tweets_path %></li>
+        <li role="presentation"><%= link_to "ツイートと返信", root_path %></li>
+      </ul>
+    
         <% @tweets.each do |tweet| %>
         
         <div class="row">
-          <p><%= tweet.content %></p>
-          <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-default btn-sm btn-success' %>
-          <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+          <h4><%= tweet.content %></h4>
+          
+          <% if tweet.user_id == current_user.id %>
+            <div>
+              <p><em>投稿者:<%= link_to tweet.user.name, edit_user_registration_path %></em></p>
+              <%= profile_img_sm(tweet.user) %>
+              <p id="tw_date">作成日:<%= l tweet.created_at, format: :dt_default %>　更新日:<%= l tweet.updated_at, format: :dt_default %></p>
+            </div>
+              <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-default btn-sm btn-success' %>
+              <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+          <% else %>
+            <div>
+              <p><em>投稿者:<%= tweet.user.name if tweet.user.name.present? %></em></p>
+              <%= profile_img_sm(tweet.user) %>
+              <p id="tw_date">作成日:<%= l tweet.created_at, format: :dt_default %>　更新日:<%= l tweet.updated_at, format: :dt_default %></p>
+            </div>
+          <% end %>          
+          
         </div>
         <% end %>
-      </li>
-      
-      <li role="presentation">
-        <%= link_to "ツイートと返信", tweets_path %>
-      </li>
-
-    </ul>
-  </div>
-  
- </div>
+    </div>
+    
+  </div> 
 </div>

@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :blogs do
-    collection do
-      post :confirm
-    end
-  end
+  devise_for :users, controllers: {
+  registrations: "users/registrations"
+}
   
   resources :tweets do
     collection do

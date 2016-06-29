@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+@users = User.all
+@users.each do |n|
+  content = n.email + " ツイート"
+  user_id = n.id
+  Tweet.create!(content: content,
+               user_id: user_id,
+               )
+end
