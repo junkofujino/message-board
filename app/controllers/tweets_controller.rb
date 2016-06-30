@@ -20,6 +20,7 @@ class TweetsController < ApplicationController
     if @tweet.save
       # 一覧画面へ遷移して"ツイートしました！"とメッセージを表示します。
       redirect_to tweets_path, notice: "ツイートを作成しました！"
+      NoticeMailer.sendmail_blog(@tweet).deliver
     else
       # 入力フォームを再描画します。
       render action: 'new'

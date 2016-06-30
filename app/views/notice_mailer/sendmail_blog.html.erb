@@ -1,0 +1,8 @@
+<h1>新しくtweetが投稿されました！</h1>
+
+<h4><%= @tweet.content %></h4>
+<p>投稿者: <%= @tweet.user.name %></p>
+
+<p>
+  <%= link_to '投稿されたtweetはこちら', tweets_path(@tweet) %>
+</p>

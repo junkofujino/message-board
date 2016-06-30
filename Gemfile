@@ -61,3 +61,8 @@ gem 'faker'
 
 # JavaScript
 gem 'jquery-turbolinks'
+
+# ActionMailer
+group :development do
+  gem 'letter_opener'
+end
